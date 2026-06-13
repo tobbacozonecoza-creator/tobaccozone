@@ -1,44 +1,168 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>TOBBACO ZONE</title>
+
+<style>
+body{
+background:#111;
+color:white;
+font-family:Arial,sans-serif;
+margin:0;
+}
+
+header{
+background:#000;
+padding:20px;
+text-align:center;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+padding:15px;
+}
+
+.card{
+background:#1c1c1c;
+border-radius:10px;
+padding:15px;
+text-align:center;
+}
+
+.card img{
+width:100%;
+height:250px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.price{
+color:#00ff88;
+font-size:24px;
+font-weight:bold;
+}
+
+button{
+background:#00ff88;
+border:none;
+padding:10px 15px;
+border-radius:5px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.cart{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+background:#000;
+padding:15px;
+text-align:center;
+}
+
+.whatsapp{
+display:inline-block;
+margin-top:10px;
+background:#25D366;
+color:white;
+padding:10px 20px;
+border-radius:5px;
+text-decoration:none;
+}
+</style>
 </head>
 
-<body style="background:black;color:white;font-family:Arial;">
+<body>
 
+<header>
 <h1>TOBBACO ZONE</h1>
 <p>Premium Vape Store</p>
+</header>
 
-<h2>Products</h2>
+<div class="products">
 
-<p>E-Xhale Peach Mango Lychee Box</p>
-<p>R2100</p>
+<div class="card">
+<img src="20260613_221351(1).jpg">
+<h3>E-Xhale Peach Mango Lychee</h3>
+<div class="price">R2100</div>
+<button onclick="addItem('Peach Mango Lychee',2100)">Add To Cart</button>
+</div>
 
-<p>E-Xhale Black Ice Box</p>
-<p>R1800</p>
+<div class="card">
+<img src="20260613_221338.jpg">
+<h3>E-Xhale Black Ice</h3>
+<div class="price">R1800</div>
+<button onclick="addItem('Black Ice',1800)">Add To Cart</button>
+</div>
 
-<p>E-Xhale Dragon Cosmo Box</p>
-<p>R1700</p>
+<div class="card">
+<img src="20260613_221236.jpg">
+<h3>E-Xhale Dragon Cosmo</h3>
+<div class="price">R1700</div>
+<button onclick="addItem('Dragon Cosmo',1700)">Add To Cart</button>
+</div>
 
-<p>E-Xhale Grape Lychee Box</p>
-<p>R2100</p>
+<div class="card">
+<img src="20260613_221156.jpg">
+<h3>E-Xhale Grape Lychee</h3>
+<div class="price">R2100</div>
+<button onclick="addItem('Grape Lychee',2100)">Add To Cart</button>
+</div>
 
-<p>Nasty Strawberry Raspberry Box</p>
-<p>R2500</p>
+<div class="card">
+<img src="20260613_221322.jpg">
+<h3>Nasty Strawberry Raspberry</h3>
+<div class="price">R2500</div>
+<button onclick="addItem('Strawberry Raspberry',2500)">Add To Cart</button>
+</div>
 
-<p>Nasty Watermelon Ice Box</p>
-<p>R2500</p>
+<div class="card">
+<img src="20260613_221217.jpg">
+<h3>Nasty Watermelon Ice</h3>
+<div class="price">R2500</div>
+<button onclick="addItem('Watermelon Ice',2500)">Add To Cart</button>
+</div>
 
-<h2>Contact Us</h2>
+</div>
 
-<p>Phone: +27 67 016 5860</p>
-<p>Email: tobaccozone.co.za@gmail.com</p>
+<div class="cart">
+<h3>Cart Total: R<span id="total">0</span></h3>
 
-<p>
-<a href="https://wa.me/27670165860" style="color:#00ff88;">
-Order on WhatsApp
+<a id="orderBtn"
+class="whatsapp"
+href="#">
+Checkout on WhatsApp
 </a>
-</p>
+</div>
+
+<script>
+let total=0;
+let items=[];
+
+function addItem(name,price){
+items.push(name);
+total+=price;
+
+document.getElementById("total").innerText=total;
+
+let msg="Hello, I would like to order:%0A%0A";
+
+items.forEach(i=>{
+msg+="• "+i+"%0A";
+});
+
+msg+="%0A Total: R"+total;
+
+document.getElementById("orderBtn").href=
+"https://wa.me/27670165860?text="+msg;
+}
+</script>
 
 </body>
 </html>
